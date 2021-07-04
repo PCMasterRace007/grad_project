@@ -1,0 +1,25 @@
+.center {
+  margin: auto;
+  width: 30%;
+  padding: 10px;
+}
+.centerb {
+  margin: auto;
+  width: 20%;
+  padding: 10px;
+}
+.round {
+  padding: 10px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+}
+.centerf {
+  margin: auto;
+  width: 80%;
+  padding: 10px;
+}
+.txtb {
+  font-family: "Raleway";
+  font-size: 17px;
+  font-weight: bolder;
+}

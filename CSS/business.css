@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Acme&family=Cookie&family=Montserrat:wght@300&family=Raleway&family=Rochester&family=Tangerine:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200&family=Montserrat:wght@200&display=swap");
+:root {
+  --front: #f85f73;
+  --bg: #eaffd0;
+  --dark: #95e1d3;
+  --deep: #fce38a;
+  --deeper: #283c63;
+}
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif;
+}
+body {
+  background-color: var(--bg);
+}
+.w3-bar,
+h1,
+button {
+  font-family: "Montserrat", sans-serif;
+}
+
+.fa-briefcase,
+.fa-handshake {
+  font-size: 200px;
+}
+.nav {
+  background-color: var(--deep);
+}
+.txt {
+  font-family: "Montserrat", sans-serif;
+}
+.join {
+  color: var(--deeper);
+  font-family: "Raleway";
+  font-size: 20px;
+}
+.logo {
+  font-family: "Rochester";
+  color: var(--front);
+  font-weight: bolder;
+}
+.icon {
+  color: var(--front);
+}
