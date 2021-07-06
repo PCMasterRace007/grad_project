@@ -53,13 +53,13 @@ $email = $_COOKIE["bloginemail"];
         </div>
     </div>
     <div class="w3-container">
-        <h3 class="w3-center txt">Packages that customers have requested to booked</h3>
+        <h3 class="w3-center txt">Packages that customers have booked</h3>
     </div>
     <br>
     <?php
     $sql = "SELECT * FROM pkg_info,
     packages
-    WHERE packages.pid = pkg_info.pid AND packages.bemail = '$email' AND iscancelled = 0 AND ( approval = 0 OR ispaid = 0)";
+    WHERE packages.pid = pkg_info.pid AND packages.bemail = '$email' AND iscancelled = 0 AND approval = 1 AND ispaid = 1 AND todate >= CURRENT_DATE";
     $ret = $db->query($sql);
     while ($row = $ret->fetchArray(SQLITE3_BOTH)) {
     ?>

@@ -189,8 +189,13 @@ $count;
         <br>
         <?php if (strtotime("now") > strtotime($to) && $iscancelled === 0 && $approve === 1 && $ispaid === 1) { ?>
         <h3 class="txt w3-center">Review</h3>
+        <br>
         <h4 class="txt w3-center">Looks like you completed this tour. You can submit a review for this pacakge to share
             your experience.</h4>
+        <?php $sqlreview = "SELECT rimage, description, rating FROM review WHERE bid = '$bid'";
+            $retreview = $db->query($sqlreview);
+            $rowreview = $retreview->fetchArray(SQLITE3_BOTH);
+            if (!$rowreview) { ?>
         <br>
         <h4 class="txt w3-center">Review form</h4>
         <form class="w3-container w3-round centerf w3-card w3-fc txt" action="submitreview.php" method="POST"
@@ -218,7 +223,10 @@ $count;
                 required />
             <input class="w3-button w3-green w3-center" type="submit" name="submit" value="submit" required />
         </form>
-        <?php } ?>
+        <?php } else {
+                echo '<h4 class="txt w3-center">You already have submitted your review for this package.</h4>';
+            }
+        } ?>
         <br>
         <h3 class="txt w3-center parad">Payment</h3>
         <br>
@@ -226,7 +234,7 @@ $count;
         if ($approve === 0 && $iscancelled === 0) { ?>
         <h4 class="txt w3-center parad">This package is not yet approved by the agency, once they approve it you can pay
             for this package.</h4>
-        <?php } elseif ($iscancelled === 1) { ?>
+        <?php } elseif ($iscancelled === 1 && $ispaid === 0) { ?>
         <h4 class="txt w3-center">This package was cancelled by the agency. <b>If you had paid for the package and were
                 not
                 refunded within 48 hours please email us at: <a
@@ -235,10 +243,20 @@ $count;
         <?php } elseif ($approve === 1 && $ispaid === 0 && strtotime($from) < strtotime(date("Y-m-d"))) {  ?>
         <h4 class="txt w3-center">This package was approved but you did not pay for it within stipulated time. So it was
             cancelled.</h4>
-        <?php } elseif ($approve === 1 && $ispaid === 1) { ?>
+        <?php } elseif ($approve === 1 && $ispaid === 1 && $iscancelled === 0) { ?>
         <h4 class="txt w3-center">This package is paid for and approved by the agency.You will be emailed by the agency
             on further details. Here is the email address of the agency if you need to contact the agency :
             <?php echo $row2['bemail']; ?></h4>
+        <br>
+        <div class="w3-container w3-center">
+            <a href="cancelbooking.php?bid=<?php echo $bid; ?>"><button class=" w3-button txt w3-center w3-red">Cancel
+                    this package</button></a>
+        </div>
+        <br>
+        <?php } elseif ($approve === 1 && $ispaid === 1 && $iscancelled === 1) { ?>
+        <h4 class="txt w3-center">This package is flagged to be cancelled. The agency will cancel it and refund your
+            payment.</h4>
+        <br>
         <?php } else { ?>
         <h4 class="txt w3-center parad"><i class="fas fa-money-check-alt"></i> Total Cost: <span
                 style="font-family: sans-serif;">₹</span><?php echo $count * $row2['cost']; ?></h4>

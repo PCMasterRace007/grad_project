@@ -60,7 +60,8 @@ if ($uploadOk == 0) {
         header("Refresh: 2; URL=showbooking.php?bid=$bid");
         echo "<h3>The file " . htmlspecialchars(basename($_FILES["proof"]["name"])) . " has been uploaded.</h3><h3>Your profile picture was successfully changed, redirecting you to your account";
     } else {
-        echo '<h3>Sorry, there was an error uploading your file.</h3>';
+        header("Refresh: 2; URL=showbooking.php?bid=$bid");
+        echo '<h3>Sorry, there was an error uploading your file. Try again.</h3>';
     }
 }
 $db->close();

@@ -67,7 +67,7 @@ $email = $_COOKIE["bloginemail"];
         </div>
         <br>
         <div class="w3-card-4 center w3-bc round">
-            <h4 class="w3-center">contact : <?php echo $_COOKIE["bcontact"]; ?></h4>
+            <h4 class="w3-center">Contact : <?php echo $_COOKIE["bcontact"]; ?></h4>
         </div>
         <br>
         <div class=" w3-center">
@@ -162,13 +162,24 @@ $email = $_COOKIE["bloginemail"];
         <br>
         <h3 class="w3-center txt w3-padding-32">My Listings</h3>
         <div class=" w3-center">
-            <a href="managebooking.php"><Button class="centerb w3-button w3-green"><i class="fas fa-plus-circle"></i>
+            <a href="addlisting.php"><Button class="centerb w3-button w3-green"><i class="fas fa-plus-circle"></i>
                     Add listings</Button></a>
         </div>
         <br>
         <div class=" w3-center">
-            <a href="managebookings.php"><Button class="centerb w3-button w3-green"><i class="far fa-edit"></i>
-                    Manage bookings</Button></a>
+            <a href="managebookings.php"><Button class="centerb w3-button w3-orange"><i class="far fa-edit"></i>
+                    Manage pending bookings</Button></a>
+        </div>
+        <br>
+        <div class=" w3-center">
+            <a href="viewcancelledbookings.php"><Button class="centerb w3-button w3-red"><i
+                        class="fas fa-times-circle"></i>
+                    Refund canceled bookings</Button></a>
+        </div>
+        <br>
+        <div class=" w3-center">
+            <a href="viewbookings.php"><Button class="centerb w3-button w3-green"><i class="fas fa-eye"></i>
+                    View completed bookings</Button></a>
         </div>
         <br>
         <?php

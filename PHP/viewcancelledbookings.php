@@ -53,13 +53,13 @@ $email = $_COOKIE["bloginemail"];
         </div>
     </div>
     <div class="w3-container">
-        <h3 class="w3-center txt">Packages that customers have requested to booked</h3>
+        <h3 class="w3-center txt">Packages that customers have requested to cancel</h3>
     </div>
     <br>
     <?php
     $sql = "SELECT * FROM pkg_info,
     packages
-    WHERE packages.pid = pkg_info.pid AND packages.bemail = '$email' AND iscancelled = 0 AND ( approval = 0 OR ispaid = 0)";
+    WHERE packages.pid = pkg_info.pid AND packages.bemail = '$email' AND iscancelled = 1 AND ispaid = 1";
     $ret = $db->query($sql);
     while ($row = $ret->fetchArray(SQLITE3_BOTH)) {
     ?>
@@ -145,53 +145,14 @@ $email = $_COOKIE["bloginemail"];
         </div>
     </div>
     <br>
-    <?php
-        if (strtotime("now") > strtotime($row['fromdate'] . "- 5days")) {
-            $bidc = $row['bid'];
-            $sqlcancel = "UPDATE pkg_info SET iscancelled = 1 WHERE bid ='$bidc'";
-            $retc = $db->exec($sqlcancel);
-        }
-        ?>
-    <div class="w3-container">
-        <?php if ($row['approval'] == 0) { ?>
-        <div class=" w3-center">
-            <h4 class="txt w3-center">You can choose to aprrove or not approve this package.<b> But once you approve you
-                    cannot cancel it
-                    later from here*</b></h4>
-            <form method="POST" action="papprove.php">
-                <input class="w3-button w3-green" type="submit" name="approval" value="Approve" />
-                <input class="w3-button w3-red" type="submit" name="approval" value="Cancel" />
-                <input class="w3-button w3-green" type="hidden" name="bid" value="<?php echo $row['bid']; ?>" />
-            </form>
-        </div>
-        <?php } elseif ($row['approval'] == 1 && $row['ispaid'] == 0) { ?>
-        <h4 class="txt w3-center">The payment proof sent by the customer will appear here.<b> You need to verify through
-                the picture the full amount is sent to your account number through the customer's account number given
-                in the table*. If the payment was not done from the account number mentioned in the table, refund the
-                amount to the same account number the payment came from and reject the payment.</b>
-        </h4>
-        <?php if ($src = glob("../payimage/" . $row['bid'] . ".*")) { ?>
-        <div class="w3-center w3-display-container">
-            <img class="img3" src="<?php echo $src[0]; ?>" alt="payproof">
-            <br>
-            <br>
-            <form method="POST" action="payapprove.php">
-                <input class="w3-button w3-green" type="submit" name="pay" value="Approve pay" />
-                <input class="w3-button w3-red" type="submit" name="pay" value="Reject" />
-                <input class="w3-button w3-green" type="hidden" name="bidp" value="<?php echo $row['bid']; ?>" />
-            </form>
-        </div>
-        <?php } ?>
-        <?php } else { ?>
-        <h4 class="txt w3-center">This package is approved and paid for by the customer. You must contact the customer's
-            email and send them further details.<b> Failing to deliver, you must refund entire amount*</b>.
-        </h4>
-        <?php } ?>
+    <h4 class="txt w3-center">You have to refund the customer and cancel this booking within 48 hours.</h4>
+    <br>
+    <div class="w3-container w3-center">
+        <a href="confirmcancel.php?bid=<?php echo $row['bid']; ?>"><button class=" w3-center w3-button w3-red">Confirm
+                Refund
+                and Cancel</button></a>
     </div>
-    <div class=" w3-container">
-        <hr style="border: 5px solid var(--deeper);
-  border-radius: 5px;">
-    </div>
+
     <?php
     }
     ?>

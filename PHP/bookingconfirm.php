@@ -70,7 +70,8 @@
             approval,
             ispaid,
             caccno,
-            email
+            email,
+            iscancelled
         )
         VALUES (
             '$bid',
@@ -80,7 +81,8 @@
             0,
             0,
             '$caccno',
-            '$email'
+            '$email',
+            0
         )";
     $ret = $db->exec($sql);
     if (!$ret) {

@@ -16,7 +16,7 @@ if (!$db) {
 $email = $_POST["email"];
 $pass = $_POST["pass"];
 $sql = "SELECT email, pass, name, contact FROM business WHERE email = '$email'";
-echo $sql;
+//echo $sql;
 $ret = $db->query($sql);
 if (!($row = $ret->fetchArray(SQLITE3_BOTH))) {
     header('Refresh: 2; URL=../HTML/blogin.html');

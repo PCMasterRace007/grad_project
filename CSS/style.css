@@ -164,6 +164,14 @@ figure:hover + span {
   background-repeat: no-repeat;
   background-image: url("somepic.jpg");
 }
+.img4 {
+  width: 350px;
+  height: 200px;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-image: url("somepic.jpg");
+}
 .para {
   display: -webkit-box;
   overflow: hidden;

@@ -26,7 +26,7 @@ class MyDB extends SQLite3
 $db = new MyDB();
 if (!$db) {
     header('Refresh: 2; URL=../HTML/login.html');
-    echo '<h3>Error encountered, redirecting' . $db->lastErrorMsg() . '</h3>';
+    echo '<h3 class = "txt w3-center">Error encountered, redirecting' . $db->lastErrorMsg() . '</h3>';
     exit();
 }
 if (!isset($_COOKIE["loginemail"])) {
@@ -42,7 +42,7 @@ $bid = $_POST["bid"];
 $pid = $_POST["pid"];
 $target_dir = "../rimage/";
 $fname = $bid . "." . strtolower(pathinfo($_FILES["rimage"]["name"], PATHINFO_EXTENSION));
-echo $fname;
+//echo $fname;
 $target_file = $target_dir . $fname;
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
@@ -54,7 +54,7 @@ if (isset($_POST["upload"])) {
         $uploadOk = 1;
     } else {
         header("Refresh: 2; URL=showbooking.php?bid=$bid");
-        echo '<h3>File is not an image. Redirecting you to your account. Please try again.</h3>';
+        echo '<h3 class = "txt w3-center">File is not an image. Redirecting you to your account. Please try again.</h3>';
         $uploadOk = 0;
         $db->close();
         exit();
@@ -64,7 +64,7 @@ if (isset($_POST["upload"])) {
 // Check if file already exists
 if (file_exists($target_file)) {
     header("Refresh: 2; URL=showbooking.php?bid=$bid");
-    echo '<h3>Sorry same file/picture already exists. Redirecting you to your account. Please try again with a different name.</h3>';
+    echo '<h3 class = "txt w3-center">Sorry same file/picture already exists. Redirecting you to your account. Please try again with a different name.</h3>';
     $uploadOk = 0;
     $db->close();
     exit();
@@ -73,7 +73,7 @@ if (file_exists($target_file)) {
 // Check file size
 if ($_FILES["rimage"]["size"] > 1048576) {
     header("Refresh: 2; URL=showbooking.php?bid=$bid");
-    echo '<h3>Sorry your file/picture is too large in size. Redirecting you to your account. Please try again with an image of size less than 1 MB.</h3>';
+    echo '<h3 class = "txt w3-center">Sorry your file/picture is too large in size. Redirecting you to your account. Please try again with an image of size less than 1 MB.</h3>';
     $uploadOk = 0;
     $db->close();
     exit();
@@ -84,19 +84,18 @@ if (
     $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
 ) {
     header("Refresh: 2; URL=showbooking.php?bid=$bid");
-    echo '<h3>Sorry, only JPG, JPEG, PNG files are allowed. Redirecting you to your account. Please try again with an image of the above file extensions</h3>';
+    echo '<h3 class = "txt w3-center">Sorry, only JPG, JPEG, PNG files are allowed. Redirecting you to your account. Please try again with an image of the above file extensions</h3>';
     $uploadOk = 0;
     $db->close();
     exit();
 }
 
 if ($uploadOk == 0) {
-    echo '<h3>Sorry, your file was not uploaded.</h3>';
+    echo '<h3 class = "txt w3-center>Sorry, your file was not uploaded.</h3>';
     // if everything is ok, try to upload file
 } else {
     if (move_uploaded_file($_FILES["rimage"]["tmp_name"], $target_file)) {
-        header("Refresh: 2; URL=showbooking.php?bid=$bid");
-        echo "<h3>The file " . htmlspecialchars(basename($_FILES["proof"]["name"])) . " has been uploaded.</h3><h3>Your profile picture was successfully changed, redirecting you to your account";
+        echo "<h3" . ' class = "txt w3-center"' . ">The file " . htmlspecialchars(basename($_FILES["proof"]["name"])) . " has been uploaded.</h3>" . '<h3 class = "txt w3-center">Your profile picture was successfully changed, redirecting you to your account';
         $sql = "INSERT INTO review (
             email,
             pid,
@@ -113,8 +112,19 @@ if ($uploadOk == 0) {
             '$review',
             '$rating'
         )";
+        $ret = $db->exec($sql);
+        if (!$ret) {
+            header("Refresh: 2; URL=showbooking.php?bid=$bid");
+            echo '<h3 class = "txt w3-center">Sorry, there was an error while uploading your review. Try again.</h3>';
+        } else {
+            header("Refresh: 2; URL=showbooking.php?bid=$bid");
+            echo '<h3 class = "txt w3-center">Review added successfully.</h3>';
+        }
     } else {
-        echo '<h3>Sorry, there was an error uploading your file.</h3>';
+        header("Refresh: 2; URL=showbooking.php?bid=$bid");
+        $sql = "DELETE FROM review WHERE bid = '$bid'";
+        $ret = $db->exec($sql);
+        echo '<h3 class = "txt w3-center">Sorry, there was an error uploading your file.</h3>';
     }
 }
 $db->close();
