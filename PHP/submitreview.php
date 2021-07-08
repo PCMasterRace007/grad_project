@@ -50,7 +50,7 @@ $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 if (isset($_POST["upload"])) {
     $check = getimagesize($_FILES["rimage"]["tmp_name"]);
     if ($check !== false) {
-        echo "<h3>File is an image - " . $check["mime"] . ".</h3>";
+        echo '<h3 class = "txt w3-center">File is an image - ' . $check["mime"] . ".</h3>";
         $uploadOk = 1;
     } else {
         header("Refresh: 2; URL=showbooking.php?bid=$bid");

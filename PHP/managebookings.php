@@ -59,7 +59,7 @@ $email = $_COOKIE["bloginemail"];
     <?php
     $sql = "SELECT * FROM pkg_info,
     packages
-    WHERE packages.pid = pkg_info.pid AND packages.bemail = '$email' AND iscancelled = 0 AND ( approval = 0 OR ispaid = 0)";
+    WHERE packages.pid = pkg_info.pid AND packages.bemail = '$email' AND iscancelled = 0 AND ( approval = 0 OR ispaid = 0) ORDER BY fromdate";
     $ret = $db->query($sql);
     while ($row = $ret->fetchArray(SQLITE3_BOTH)) {
     ?>

@@ -73,7 +73,8 @@
                 <h3 class="txt">List your business with us!</h3>
                 <p>As the top provider of travel packages. we assure you that we will help your business grow!</p>
                 <p style="line-height: 2.7;">Start by visiting our business site.</p>
-                <p><a href="business.html"><button class="w3-button btn-color txt">Visit our business site</button></a>
+                <p><a href="../HTML/business.html"><button class="w3-button btn-color txt">Visit our business
+                            site</button></a>
                 </p>
             </div>
         </div>
@@ -86,9 +87,12 @@
 
     <div class="w3-content w3-display-container" style="max-width:1800px">
         <div style="width: 1800px; height: 500px; overflow: hidden">
-            <img class="mySlides" alt="slide1" src="../manali2.jpg" style="width: 100%;" ;>
-            <img class="mySlides" alt="slide2" src="../manali3.jpg" style="width:100%">
-            <img class="mySlides" alt="slide3" src="../maha2.jpg" style="width:100%">
+            <a href="searchdetails.php?pid=trish.das@gmail.com74972957060e69e818af2b"><img class="mySlides" alt="slide1"
+                    src="../manali2.jpg" style="width: 100%;" ;></a>
+            <a href="searchdetails.php?pid=trish.das@gmail.com169082815460e68e7db59c1"><img class="mySlides"
+                    alt="slide2" src="../manali3.jpg" style="width:100%"></a>
+            <a href="searchdetails.php?pid=trish.das@gmail.com82428136860e6b5ffab296"><img class="mySlides" alt="slide3"
+                    src="../taj.jpg" style="width:100%"></a>
         </div>
         <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle"
             style="width:100%">
@@ -109,7 +113,7 @@
         <div class="w3-row-padding w3-text-white w3-large">
             <div class="w3-half w3-margin-botton">
                 <div class="w3-display-container hover01">
-                    <a href="#">
+                    <a href="searchdetails.php?pid=trish.das@gmail.com74006646860e5ee961e273">
                         <figure><img src="../goa.jpg" alt="Goa" style="width:100%"></figure>
                     </a>
                     <span class="w3-display-bottomleft w3-padding txt" style="font-size: x-large;">Goa</span>
@@ -119,7 +123,7 @@
                 <div class="w3-row-padding" style="margin:0 -16px">
                     <div class="w3-half w3-margin-bottom">
                         <div class="w3-display-container hover01">
-                            <a href="#">
+                            <a href="searchdetails.php?pid=pallavisaha418@gmail.com51334806760e5e6b13fa71">
                                 <figure><img src="../lagoon.png" alt="New York" style="width:100%"></figure>
                             </a>
                             <span class="w3-display-bottomleft w3-padding">Kerala</span>
@@ -127,7 +131,7 @@
                     </div>
                     <div class="w3-half w3-margin-bottom">
                         <div class="w3-display-container hover01">
-                            <a href="#">
+                            <a href="searchdetails.php?pid=b@mail.com182125082560daf505eccbd">
                                 <figure><img src="../kashmir.png" alt="San Francisco" style="width:100%"></figure>
                             </a>
                             <span class="w3-display-bottomleft w3-padding">Jammu & Kashmir</span>
@@ -137,7 +141,7 @@
                 <div class="w3-row-padding" style="margin:0 -16px">
                     <div class="w3-half w3-margin-bottom">
                         <div class="w3-display-container hover01">
-                            <a href="#">
+                            <a href="searchdetails.php?pid=trish.das@gmail.com178228762160e5f9a9b2fd7">
                                 <figure><img src="../kedarnath.png" alt="Pisa" style="width:100%"></figure>
                             </a>
                             <span class="w3-display-bottomleft w3-padding">Uttarakhand</span>
@@ -145,7 +149,7 @@
                     </div>
                     <div class="w3-half w3-margin-bottom">
                         <div class="w3-display-container hover01">
-                            <a href="#">
+                            <a href="searchdetails.php?pid=pallavisaha418@gmail.com31618203360e67a3d48191">
                                 <figure><img src="../hampi.png" alt="Paris" style="width:100%"></figure>
                             </a>
                             <span class="w3-display-bottomleft w3-padding">Karnataka</span>
@@ -159,8 +163,10 @@
             <div class="w3-panel w3-padding-16 w3-black w3-card opacity-min w3-hover-opacity-off">
                 <h2 class="txt">Get the best offers first!</h2>
                 <p class="txt">Join our newsletter. Get notified of exciting deals.</p>
-                <input class="w3-input w3-border txt" type="text" placeholder="Your Email address">
-                <button type="button" class="w3-button w3-margin-top btn-color txt">Subscribe</button>
+                <form action="../PHP/sub.php" method="POST">
+                    <input class="w3-input w3-border txt" type="email" placeholder="Your Email address" name="email">
+                    <button type="submit" class="w3-button w3-margin-top btn-color txt">Subscribe</button>
+                </form>
             </div>
         </div>
         <!-- Contact -->
@@ -169,7 +175,8 @@
             <p>Let us book your next trip!</p>
             <i class="fa fa-map-marker" style="width:30px"></i> Burdwan 713101, WB, India<br>
             <i class="fa fa-phone" style="width:30px"></i> Phone: +91 8759582904<br>
-            <i class="fa fa-envelope" style="width:30px"> </i> Email: indiXplore@yahoo.com<br>
+            <i class="fa fa-envelope" style="width:30px"> </i>Email:
+            <a href="mailto:indiXplore@yahoo.com">indiXplore@yahoo.com</a><br>
             <form action="/action_page.php" target="_blank">
                 <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Name" required name="Name">
                 </p>

@@ -207,14 +207,31 @@ $sql2 = "SELECT image FROM pacimage WHERE pid = '$pid'";
             //echo $sql3;
             $ret3 = $db->query($sql3);
             while ($row3 = $ret3->fetchArray(SQLITE3_BOTH)) {
-                $cemail = $row3['email'];
-                $sqlname = "SELECT name FROM customers WHERE email = '$cemail'";
-                $retname = $db->query($sqlname);
-                $rowname = $retname->fetchArray(SQLITE3_BOTH);
+                if ($row3['email'] != null) {
+                    $cemail = $row3['email'];
+                    $sqlname = "SELECT name FROM customers WHERE email = '$cemail'";
+                    $retname = $db->query($sqlname);
+                    $rowname = $retname->fetchArray(SQLITE3_BOTH);
             ?>
             <?php if ($i == 0) { ?>
             <div class="w3-center">
                 <h4 class="txt w3-center">Total Rating :
+                    <?php for ($j = 0; $j < 5; $j++) {
+                                    if (($row3['avg'] - $j) >= 1) {
+                                        echo '<i class="fas fa-star"></i>';
+                                    } elseif (($row3['avg'] - $j) < 1 && ($row3['avg'] - $j) > 0) {
+                                        echo '<i class="fas fa-star-half-alt"></i>';
+                                    } else {
+                                        echo '<i class="far fa-star"></i>';
+                                    }
+                                } ?>
+                </h4>
+            </div>
+            <br>
+            <?php } ?>
+            <div class="w3-third w3-row-padding txt">
+                <h4 class="txt w3-center"><?php echo ucwords($rowname['name']); ?></h4>
+                <div class="w3-center">
                     <?php for ($j = 0; $j < 5; $j++) {
                                 if (($row3['avg'] - $j) >= 1) {
                                     echo '<i class="fas fa-star"></i>';
@@ -224,22 +241,6 @@ $sql2 = "SELECT image FROM pacimage WHERE pid = '$pid'";
                                     echo '<i class="far fa-star"></i>';
                                 }
                             } ?>
-                </h4>
-            </div>
-            <br>
-            <?php } ?>
-            <div class="w3-third w3-row-padding txt">
-                <h4 class="txt w3-center"><?php echo ucwords($rowname['name']); ?></h4>
-                <div class="w3-center">
-                    <?php for ($j = 0; $j < 5; $j++) {
-                            if (($row3['avg'] - $j) >= 1) {
-                                echo '<i class="fas fa-star"></i>';
-                            } elseif (($row3['avg'] - $j) < 1 && ($row3['avg'] - $j) > 0) {
-                                echo '<i class="fas fa-star-half-alt"></i>';
-                            } else {
-                                echo '<i class="far fa-star"></i>';
-                            }
-                        } ?>
                 </div>
                 <p class="txt w3-center"><?php echo $row3['description']; ?></p>
                 <div class="w3-display-container w3-center">
@@ -247,10 +248,23 @@ $sql2 = "SELECT image FROM pacimage WHERE pid = '$pid'";
                 </div>
             </div>
             <?php
+                }
             } ?>
         </div>
         <br>
     </div>
+    <br>
+    <footer class="w3-container w3-center w3-opacity nav">
+        <h5>Find Us On</h5>
+        <div class="w3-xlarge w3-padding-large">
+            <i class="fa fa-facebook-official w3-hover-opacity"></i>
+            <i class="fa fa-instagram w3-hover-opacity"></i>
+            <i class="fa fa-snapchat w3-hover-opacity"></i>
+            <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+            <i class="fa fa-twitter w3-hover-opacity"></i>
+            <i class="fa fa-linkedin w3-hover-opacity"></i>
+        </div>
+    </footer>
     <script>
     var slideIndex = 1;
     showDivs(slideIndex);

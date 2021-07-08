@@ -150,7 +150,7 @@ if (!($rowp = $retp->fetchArray(SQLITE3_BOTH))) {
             if ($row['bid'] == null) {
                 echo '<h4 class="txt w3-center parad>No Bookings available</h4>';
                 $db->close();
-                exit();
+                //break;
             } else {
                 $ret = $db->query($sql);
                 while ($row = $ret->fetchArray(SQLITE3_BOTH)) { ?>
@@ -168,10 +168,20 @@ if (!($rowp = $retp->fetchArray(SQLITE3_BOTH))) {
                 $db->close();
             }
             $db->close();
-            exit();
             ?>
 
         </div>
     </div>
+    <footer class="w3-container w3-center w3-opacity nav">
+        <h5>Find Us On</h5>
+        <div class="w3-xlarge w3-padding-large">
+            <i class="fa fa-facebook-official w3-hover-opacity"></i>
+            <i class="fa fa-instagram w3-hover-opacity"></i>
+            <i class="fa fa-snapchat w3-hover-opacity"></i>
+            <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+            <i class="fa fa-twitter w3-hover-opacity"></i>
+            <i class="fa fa-linkedin w3-hover-opacity"></i>
+        </div>
+    </footer>
 
 </body>

@@ -1,60 +1,39 @@
 <?php
+$sql2 = "SELECT email, name, contatn FROM business";
 $ret2 = $db->query($sql2);
+while ($row2 = $ret2->fetchArray(SQLITE3_BOTH)) {
 ?>
-<div class="w3-content" style="max-width:1200px">
-    <img class="mySlides" src="<?php $p1 = $ret2->fetchArray(SQLITE3_BOTH);
-                                echo "../pacimage/" . $p1['image']; ?>" style="width:100%;display:none" alt="f1">
-    <img class="mySlides" src="<?php $p2 = $ret2->fetchArray(SQLITE3_BOTH);
-                                echo "../pacimage/" . $p2['image']; ?>" style="width:100%" alt="f2">
-    <img class="mySlides" src="<?php $p3 = $ret2->fetchArray(SQLITE3_BOTH);
-                                echo "../pacimage/" . $p3['image']; ?>" style="width:100%;display:none" alt="f3">
-    <img class="mySlides" src="<?php $p4 = $ret2->fetchArray(SQLITE3_BOTH);
-                                echo "../pacimage/" . $p4['image']; ?>" style="width:100%;display:none" alt="f4">
-
-    <div class="w3-row-padding w3-section">
-        <div class="w3-col s3">
-            <img class="demo w3-opacity w3-hover-opacity-off" src="<?php echo "../pacimage/" . $p1['image']; ?>"
-                style="width:100%;cursor:pointer" onclick="currentDiv(1)">
-        </div>
-        <div class="w3-col s3">
-            <img class="demo w3-opacity w3-hover-opacity-off" src="<?php echo "../pacimage/" . $p2['image']; ?>"
-                style="width:100%;cursor:pointer" onclick="currentDiv(2)">
-        </div>
-        <div class="w3-col s3">
-            <img class="demo w3-opacity w3-hover-opacity-off" src="<?php echo "../pacimage/" . $p3['image']; ?>"
-                style="width:100%;cursor:pointer" onclick="currentDiv(3)">
-        </div>
-        <div class="w3-col s3">
-            <img class="demo w3-opacity w3-hover-opacity-off" src="<?php echo "../pacimage/" . $p4['image']; ?>"
-                style="width:100%;cursor:pointer" onclick="currentDiv(4)">
-        </div>
+<div class="w3-responsive">
+    <div class="w3-container">
+        <table class="w3-table-all txt">
+            <tr class="w3-fc txtb">
+                <th>
+                    Business Name
+                </th>
+                <th>
+                    Business Email
+                </th>
+                <th>
+                    Business Contact
+                </th>
+                <th>
+                    Remove Business
+                </th>
+            <tr class="w3-fc">
+                <td>
+                    <?php echo $row2['name'] ?>
+                </td>
+                <td>
+                    <?php echo $row['email'] ?>
+                </td>
+                <td>
+                    <?php echo $row2['contact'] ?>
+                </td>
+                <td>
+                    <button class="w3-button txt w3-red">Remove</button>
+                </td>
+            </tr>
+        </table>
     </div>
 </div>
-</div>
-</div>
-
-<script>
-function currentDiv(n) {
-    showDivs(slideIndex = n);
-}
-
-function showDivs(n) {
-    var i;
-    var x = document.getElementsByClassName("mySlides");
-    var dots = document.getElementsByClassName("demo");
-    if (n > x.length) {
-        slideIndex = 1
-    }
-    if (n < 1) {
-        slideIndex = x.length
-    }
-    for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none";
-    }
-    for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
-    }
-    x[slideIndex - 1].style.display = "block";
-    dots[slideIndex - 1].className += " w3-opacity-off";
-}
-</script>
+<?php } ?>

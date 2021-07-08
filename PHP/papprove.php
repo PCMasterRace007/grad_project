@@ -10,12 +10,12 @@ class MyDB extends SQLite3
 $db = new MyDB();
 if (!$db) {
     header('Refresh: 2; URL=../HTML/blogin.html');
-    echo '<h3>Error encountered, redirecting' . $db->lastErrorMsg() . '</h3>';
+    echo '<h3 class="txt w3-center">Error encountered, redirecting' . $db->lastErrorMsg() . '</h3>';
     exit();
 }
 if (!isset($_COOKIE["bloginemail"])) {
     header('Refresh: 2; URL=../HTML/blogin.html');
-    echo '<h3>You are not logged in, redirecting to login</h3>';
+    echo '<h3 class="txt w3-center">You are not logged in, redirecting to login</h3>';
     $db->close();
     exit();
 }

@@ -160,7 +160,7 @@ $email = $_COOKIE["bloginemail"];
             </div>
         </div>
         <br>
-        <h3 class="w3-center txt w3-padding-32">My Listings</h3>
+        <h3 class="w3-center txt w3-padding-32">Manage</h3>
         <div class=" w3-center">
             <a href="addlisting.php"><Button class="centerb w3-button w3-green"><i class="fas fa-plus-circle"></i>
                     Add listings</Button></a>
@@ -182,13 +182,14 @@ $email = $_COOKIE["bloginemail"];
                     View completed bookings</Button></a>
         </div>
         <br>
+        <h3 class="w3-center txt w3-padding-32">My listings</h3>
         <?php
         $sql = "SELECT pid FROM packages WHERE bemail = '$email'";
         $ret = $db->query($sql);
         if (!($row = $ret->fetchArray(SQLITE3_BOTH))) {
             echo '<h4 class="txt w3-center">No Listings available</h4>';
             $db->close();
-            exit();
+            //exit();
         } else {
             $ret = $db->query($sql);
             while ($row = $ret->fetchArray(SQLITE3_BOTH)) { ?>
@@ -202,10 +203,19 @@ $email = $_COOKIE["bloginemail"];
             }
             $db->close();
         }
-        exit();
+        //exit();
         ?>
 
     </div>
-    </div>
-
+    <footer class="w3-container w3-center w3-opacity nav">
+        <h5>Find Us On</h5>
+        <div class="w3-xlarge w3-padding-large">
+            <i class="fa fa-facebook-official w3-hover-opacity"></i>
+            <i class="fa fa-instagram w3-hover-opacity"></i>
+            <i class="fa fa-snapchat w3-hover-opacity"></i>
+            <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+            <i class="fa fa-twitter w3-hover-opacity"></i>
+            <i class="fa fa-linkedin w3-hover-opacity"></i>
+        </div>
+    </footer>
 </body>

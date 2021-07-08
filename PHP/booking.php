@@ -28,7 +28,7 @@
     $db = new MyDB();
     if (!$db) {
         header('Refresh: 2; URL=../HTML/login.html');
-        echo '<h3>Error encountered, redirecting' . $db->lastErrorMsg() . '</h3>';
+        echo '<h3 class="txt w3-center">Error encountered, redirecting' . $db->lastErrorMsg() . '</h3>';
         exit();
     }
     $email = $_COOKIE["loginemail"];
@@ -149,6 +149,18 @@
             </div>
         </div>
     </form>
+    <br>
+    <footer class="w3-container w3-center w3-opacity nav">
+        <h5>Find Us On</h5>
+        <div class="w3-xlarge w3-padding-large">
+            <i class="fa fa-facebook-official w3-hover-opacity"></i>
+            <i class="fa fa-instagram w3-hover-opacity"></i>
+            <i class="fa fa-snapchat w3-hover-opacity"></i>
+            <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+            <i class="fa fa-twitter w3-hover-opacity"></i>
+            <i class="fa fa-linkedin w3-hover-opacity"></i>
+        </div>
+    </footer>
     <script>
     let input = document.querySelector("#confirm");
     let button = document.querySelector("#submit");
