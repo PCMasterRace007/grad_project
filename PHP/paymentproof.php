@@ -80,7 +80,7 @@ if ($uploadOk == 0) {
 } else {
     if (move_uploaded_file($_FILES["proof"]["tmp_name"], $target_file)) {
         header("Refresh: 2; URL=showbooking.php?bid=$bid");
-        echo '<h3 class="txt w3-center">The file ' . htmlspecialchars(basename($_FILES["proof"]["name"])) . " has been uploaded.</h3><h3>Your profile picture was successfully changed, redirecting you to your account";
+        echo '<h3 class="txt w3-center">The file ' . htmlspecialchars(basename($_FILES["proof"]["name"])) . " as payment proof has been uploaded.</h3>";
     } else {
         header("Refresh: 2; URL=showbooking.php?bid=$bid");
         echo '<h3 class="txt w3-center">Sorry, there was an error uploading your file. Try again.</h3>';

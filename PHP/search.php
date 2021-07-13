@@ -38,6 +38,9 @@ WHERE ( dest = '$dest' COLLATE NOCASE OR stag1 = '$dest' COLLATE NOCASE OR stag2
 
 <body>
     <!-- Navigation Bar -->
+    <?php
+    if (isset($_COOKIE["loginemail"])) {
+    ?>
     <div>
         <div class="w3-bar w3-xxlarge nav">
             <a href="account.php" class="w3-bar-item w3-button w3-mobile w3-padding-16 join"><img
@@ -49,6 +52,19 @@ WHERE ( dest = '$dest' COLLATE NOCASE OR stag1 = '$dest' COLLATE NOCASE OR stag2
                 <?php echo $_COOKIE["name"]; ?> </a>
         </div>
     </div>
+    <?php } else { ?>
+    <div>
+        <div class="w3-bar w3-xxlarge nav">
+            <a href="index.html" class="w3-bar-item w3-button w3-mobile w3-padding-16 join"><img
+                    src="../android-chrome-192x192.png" alt="Home Logo" width="62"></a>
+            <a href="signup.html" class="w3-bar-item w3-button w3-mobile w3-right w3-padding-32 join">SignUp</a>
+            <a href="login.html" class="w3-bar-item w3-button w3-mobile w3-right w3-padding-32 join">Login</a>
+            <a href="aboutus.html" class="w3-bar-item w3-button w3-mobile w3-right w3-padding-32 join">About Us</a>
+            <a href="business.html" class="w3-bar-item w3-button w3-mobile w3-right w3-padding-32 join">Not a
+                Customer?</a>
+        </div>
+    </div>
+    <?php } ?>
     <br>
     <br>
     <?php if (!$_POST["dest"] == "") { ?>

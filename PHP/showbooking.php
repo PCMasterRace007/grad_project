@@ -248,10 +248,12 @@ $count;
             on further details. Here is the email address of the agency if you need to contact the agency :
             <?php echo $row2['bemail']; ?></h4>
         <br>
+        <?php if (strtotime($from . "- 3days") > strtotime(date("Y-m-d"))) { ?>
         <div class="w3-container w3-center">
             <a href="cancelbooking.php?bid=<?php echo $bid; ?>"><button class=" w3-button txt w3-center w3-red">Cancel
                     this package</button></a>
         </div>
+        <?php } ?>
         <br>
         <?php } elseif ($approve === 1 && $ispaid === 1 && $iscancelled === 1) { ?>
         <h4 class="txt w3-center">This package is flagged to be cancelled. The agency will cancel it and refund your
@@ -303,7 +305,7 @@ $count;
                     <input class="w3-input w3-border w3-margin-bottom" type="hidden" name="bid"
                         value="<?php echo $bid; ?>" />
                     <input class="w3-input w3-border w3-button w3-green w3-text-black" type="submit"
-                        value="Upload Profile Image" name="upload" />
+                        value="Upload Payment Proof" name="upload" />
                 </div>
             </form>
         </div>

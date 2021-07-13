@@ -46,7 +46,7 @@ if (!($row = $ret->fetchArray(SQLITE3_BOTH))) {
         setcookie("bloginpass", $pass, time() + 60 * 60 * 24 * 30);
         setcookie("bname", $row['name'], time() + 60 * 60 * 24 * 30);
         setcookie("bcontact", $row['contact'], time() + 60 * 60 * 24 * 30);
-        echo '<h3>Login Successfull, Redirecting you to account page';
+        echo '<h3 class="txt w3-center">Login Successfull, Redirecting you to account page';
         $_SESSION["bloginemail"] = $email;
         $_SESSION["bloginpass"] = $pass;
         $_SESSION["bname"] = $row['name'];

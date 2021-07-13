@@ -199,8 +199,8 @@ figure:hover + span {
 }
 
 .margin {
-  margin-top: 5px;
+  /* margin-top: 5px; */
   margin-left: 20px;
-  margin-bottom: 15px;
-  margin-right: 10px;
+  /* margin-bottom: 15px; */
+  /* margin-right: 10px; */
 }

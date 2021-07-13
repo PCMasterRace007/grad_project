@@ -212,7 +212,7 @@ WHERE pid = '$pid'";
                 <?php
                 foreach ($desc as $d => $det) { ?>
                 <td>
-                    <p class="para">
+                    <p>
                         <?php echo $det; ?>
                     </p>
                 </td>

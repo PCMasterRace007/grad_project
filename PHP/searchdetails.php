@@ -41,6 +41,9 @@ $sql2 = "SELECT image FROM pacimage WHERE pid = '$pid'";
 
 <body>
     <!-- Navigation Bar -->
+    <?php
+    if (isset($_COOKIE["loginemail"])) {
+    ?>
     <div>
         <div class="w3-bar w3-xxlarge nav">
             <a href="account.php" class="w3-bar-item w3-button w3-mobile w3-padding-16 join"><img
@@ -52,6 +55,19 @@ $sql2 = "SELECT image FROM pacimage WHERE pid = '$pid'";
                 <?php echo $_COOKIE["name"]; ?> </a>
         </div>
     </div>
+    <?php } else { ?>
+    <div>
+        <div class="w3-bar w3-xxlarge nav">
+            <a href="index.html" class="w3-bar-item w3-button w3-mobile w3-padding-16 join"><img
+                    src="../android-chrome-192x192.png" alt="Home Logo" width="62"></a>
+            <a href="signup.html" class="w3-bar-item w3-button w3-mobile w3-right w3-padding-32 join">SignUp</a>
+            <a href="login.html" class="w3-bar-item w3-button w3-mobile w3-right w3-padding-32 join">Login</a>
+            <a href="aboutus.html" class="w3-bar-item w3-button w3-mobile w3-right w3-padding-32 join">About Us</a>
+            <a href="business.html" class="w3-bar-item w3-button w3-mobile w3-right w3-padding-32 join">Not a
+                Customer?</a>
+        </div>
+    </div>
+    <?php } ?>
     <br>
     <?php
     class MyDB extends SQLite3
@@ -90,7 +106,7 @@ $sql2 = "SELECT image FROM pacimage WHERE pid = '$pid'";
             <button class="w3-button w3-fc w3-display-right" onclick="plusDivs(1)">&#10095;</button>
         </div>
         <div class="w3-rest txt">
-            <div class="w3-container margin">
+            <div class="margin">
                 <h3 class="txt ">Destination : <?php echo $row['dest']; ?></h3>
                 <h4 style="margin-top: 20px;" class="txt parad">Places covered with this tour :
                     <?php echo $row['places']; ?></h4>
@@ -203,9 +219,12 @@ $sql2 = "SELECT image FROM pacimage WHERE pid = '$pid'";
         <div class=" w3-container">
             <h3 style="margin-top: 20px;" class="w3-center txt">Reviews</h3>
             <?php
-            $sql3 = "SELECT AVG(rating) as avg, * FROM review WHERE pid = '$pid' ORDER BY rating DESC LIMIT 3";
+            $sql4 = "SELECT AVG(rating) as avg FROM review WHERE pid = '$pid'";
+            $sql3 = "SELECT  * FROM review WHERE pid = '$pid' ORDER BY rating DESC LIMIT 3";
             //echo $sql3;
+            $ret4 = $db->query($sql4);
             $ret3 = $db->query($sql3);
+            $row4 = $ret4->fetchArray(SQLITE3_BOTH);
             while ($row3 = $ret3->fetchArray(SQLITE3_BOTH)) {
                 if ($row3['email'] != null) {
                     $cemail = $row3['email'];
@@ -216,10 +235,11 @@ $sql2 = "SELECT image FROM pacimage WHERE pid = '$pid'";
             <?php if ($i == 0) { ?>
             <div class="w3-center">
                 <h4 class="txt w3-center">Total Rating :
-                    <?php for ($j = 0; $j < 5; $j++) {
-                                    if (($row3['avg'] - $j) >= 1) {
+                    <?php
+                                for ($j = 0; $j < 5; $j++) {
+                                    if (($row4['avg'] - $j) >= 1) {
                                         echo '<i class="fas fa-star"></i>';
-                                    } elseif (($row3['avg'] - $j) < 1 && ($row3['avg'] - $j) > 0) {
+                                    } elseif (($row4['avg'] - $j) < 1 && ($row4['avg'] - $j) > 0) {
                                         echo '<i class="fas fa-star-half-alt"></i>';
                                     } else {
                                         echo '<i class="far fa-star"></i>';
@@ -233,9 +253,9 @@ $sql2 = "SELECT image FROM pacimage WHERE pid = '$pid'";
                 <h4 class="txt w3-center"><?php echo ucwords($rowname['name']); ?></h4>
                 <div class="w3-center">
                     <?php for ($j = 0; $j < 5; $j++) {
-                                if (($row3['avg'] - $j) >= 1) {
+                                if (($row3['rating'] - $j) >= 1) {
                                     echo '<i class="fas fa-star"></i>';
-                                } elseif (($row3['avg'] - $j) < 1 && ($row3['avg'] - $j) > 0) {
+                                } elseif (($row3['rating'] - $j) < 1 && ($row3['rating'] - $j) > 0) {
                                     echo '<i class="fas fa-star-half-alt"></i>';
                                 } else {
                                     echo '<i class="far fa-star"></i>';
@@ -249,6 +269,7 @@ $sql2 = "SELECT image FROM pacimage WHERE pid = '$pid'";
             </div>
             <?php
                 }
+                $i++;
             } ?>
         </div>
         <br>

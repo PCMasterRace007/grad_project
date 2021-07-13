@@ -31,12 +31,12 @@
         echo '<h3 class="txt w3-center">Error encountered, redirecting' . $db->lastErrorMsg() . '</h3>';
         exit();
     }
-    if (!isset($_COOKIE["loginemail"])) {
+    if (!isset($_COOKIE["bloginemail"])) {
         header('Refresh: 2; URL=../HTML/login.html');
         echo '<h3 class="w3-center txt">You are not logged in, please login. Redirecting you to login page</h3>';
         exit();
     }
-    $email = $_COOKIE["loginemail"];
+    $email = $_COOKIE["bloginemail"];
     $pid = $_POST["pid"];
     $count = $_POST["count"];
     $from = $_POST["date"];

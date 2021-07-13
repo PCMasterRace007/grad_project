@@ -128,7 +128,7 @@ if (!($rowp = $retp->fetchArray(SQLITE3_BOTH))) {
                     <form class="w3-container" action="passcheck.php" method="POST">
                         <div class="w3-section">
                             <label><b>Confirm Your Profile Password</b></label>
-                            <input class="w3-input w3-border" type="text" placeholder="Enter Password" name="pass"
+                            <input class="w3-input w3-border" type="password" placeholder="Enter Password" name="pass"
                                 required />
                             <button class="w3-button w3-block w3-green w3-section w3-padding"
                                 type="submit">Submit</button>

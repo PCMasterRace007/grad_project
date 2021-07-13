@@ -87,7 +87,7 @@ $email = $_COOKIE["bloginemail"];
                 <form class="w3-container" action="bpasscheck.php" method="POST">
                     <div class="w3-section">
                         <label><b>Confirm Your Business Password</b></label>
-                        <input class="w3-input w3-border" type="text" placeholder="Enter Password" name="pass"
+                        <input class="w3-input w3-border" type="password" placeholder="Enter Password" name="pass"
                             required />
                         <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Submit</button>
                     </div>
@@ -139,7 +139,7 @@ $email = $_COOKIE["bloginemail"];
                 <form class="w3-container" action="baddpayment.php" method="POST">
                     <div class="w3-section">
                         <label><b>Confirm Your Business Password</b></label>
-                        <input class="w3-input w3-border" type="text" placeholder="Enter Password" name="passc"
+                        <input class="w3-input w3-border" type="password" placeholder="Enter Password" name="passc"
                             required />
                         <br>
                         <label><b>Enter bank IFSC code</b></label>
